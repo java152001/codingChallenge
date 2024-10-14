@@ -1,31 +1,38 @@
 import React from "react";
 import { averageByRegionAndProperty } from "../utilities/calculations";
-import { FishData, NutritionPropertyENUM } from "../types/fishdata";
+import { FishData } from "../types/fishdata";
 
 interface NutritionTableProps {
-  nutritionProperty: NutritionPropertyENUM;
   fishData: FishData[];
 }
 
-const NutritionTable: React.FC<NutritionTableProps> = ({
-  fishData,
-  nutritionProperty,
-}) => {
-  const average = Object.entries(
-    averageByRegionAndProperty(fishData, nutritionProperty)
+const NutritionTable: React.FC<NutritionTableProps> = ({ fishData }) => {
+  const averageFat = Object.entries(
+    averageByRegionAndProperty(fishData, "FatTotal")
+  );
+
+  const averageCalories = Object.entries(
+    averageByRegionAndProperty(fishData, "Calories")
   );
 
   return (
-    <>
-      <h3>Here is a table</h3>
-      {average.map((region) => {
+    <div className='grid-container'>
+      <div className='nutritionGrid'>
+        <div className='grid-cell'>Region</div>
+        <div className='grid-cell'>Average Fat</div>
+        <div className='grid-cell'>Average Calories</div>
+      </div>
+      {/* TODO Refactor to just a single array for both values */}
+      {averageFat.map((region, index) => {
         return (
-          <h5 key={region[0] + region[1]}>
-            {region[0]} has an average {nutritionProperty} count of {(region[1] as string)}
-          </h5>
+          <div className='nutritionGrid' key={region[0] + region[1]}>
+            <div className='grid-cell'>{region[0]}</div>
+            <div className='grid-cell'>{region[1]}</div>
+            <div className='grid-cell'>{averageCalories[index][1]}</div>
+          </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

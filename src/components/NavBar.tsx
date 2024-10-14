@@ -7,17 +7,28 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ routes }) => {
   return (
-    <nav>
-      {routes.map((route, index) => {
-        return (
-          <div key={route + index}>
-            <Link to={`/region?type=${encodeURIComponent(route)}`}>
-              {route}
-            </Link>
-          </div>
-        );
-      })}
-    </nav>
+    <div className="nav-container">
+      <nav className="navbar">
+        <div>
+          <Link className="navlink" to={"/"}>
+            Home
+          </Link>
+        </div>
+        <div>
+          {routes.map((route, index) => {
+            return (
+              <Link
+                className="navlink"
+                key={route + index}
+                to={`/region?type=${encodeURIComponent(route)}`}
+              >
+                {route}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+    </div>
   );
 };
 

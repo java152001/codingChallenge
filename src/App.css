@@ -55,3 +55,42 @@
   margin: 2px 0;
 }
 
+.card {
+  display: flex;
+  justify-content: space-between;
+  max-width: 720px;
+  border: 1px solid white;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.card-image {
+  max-width: 300px;
+  flex: 0 50%;
+}
+
+.card-details {
+  flex: 0 50%;
+}
+
+.card-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.title-text {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.card-title {
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+.emphasis {
+  font-weight: 600;
+}
+

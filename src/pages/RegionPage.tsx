@@ -31,14 +31,15 @@ const RegionPage: React.FC<RegionPageProps> = ({ data }) => {
   );
 
   return (
-    <div>
+    <div className='container'>
       {/* TODO Add a Check to see if the region is one we have data for and render an error page if not */}
       <h4>This is a region page for the {regionName} region</h4>
-      <NutritionTable fishData={regionData} nutritionProperty={"Calories"} />
-      <NutritionTable fishData={regionData} nutritionProperty={"FatTotal"} />
+      <NutritionTable fishData={regionData} />
+      <div className='cards-container'>
       {regionData.map((item) => {
         return <FishCard fishData={item} />;
       })}
+      </div>
     </div>
   );
 };

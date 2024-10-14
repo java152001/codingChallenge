@@ -4,4 +4,6 @@ export const fetchFish = async () => {
     const data = await response.json()
 
     return data
+
+    // TODO: Add Error Handling for failed fetch to fail gracefully
 }

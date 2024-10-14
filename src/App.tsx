@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { fetchFish } from './utilities/fetchFish'
 import { dataByFisheryRegion, averageByRegionAndProperty } from './utilities/calculations'
+import NutritionTable from './components/NutritionTable'
 import './App.css'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     const getFish = async () => {
       const fishInfo = await fetchFish()
       setFishData(fishInfo)
-      averageByRegionAndProperty(fishInfo, 'FatTotal')
+      //averageByRegionAndProperty(fishInfo, 'FatTotal')
     }
     getFish()
   }, [])
@@ -19,6 +20,12 @@ function App() {
   return (
     <>
       <h1>Welcome to the App</h1>
+      {fishData &&
+        <div>
+          <NutritionTable fishData={fishData} nutritionProperty={'Calories'} />
+          <NutritionTable fishData={fishData} nutritionProperty={'FatTotal'} />
+        </div>
+      }
     </>
   )
 }

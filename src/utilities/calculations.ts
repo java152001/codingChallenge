@@ -23,7 +23,6 @@ export const averageByRegionAndProperty = (data, property) => {
   const regionCounts = {};
 
   // Creates an object sorting data by Region, with value being an array of all calories or fat for that region
-    console.log(data)
 
   data.forEach((item) => {
     if (item[property]) {
@@ -53,8 +52,6 @@ export const averageByRegionAndProperty = (data, property) => {
       regionCounts[key].reduce((a, b) => a + b) / regionCounts[key].length
     ).toFixed(2);
   }
-
-  console.log(regionCounts)
 
   return regionCounts;
 };

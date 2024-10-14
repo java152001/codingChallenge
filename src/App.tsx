@@ -1,25 +1,24 @@
 import { useState, useEffect } from 'react'
 import { fetchFish } from './utilities/fetchFish'
-import { dataByFisheryRegion, averageByRegionAndProperty } from './utilities/calculations'
-import NutritionTable from './components/NutritionTable'
 import NavBar from './components/NavBar'
 import RegionPage from './pages/RegionPage'
 import HomePage from './pages/Home'
 import { Routes, Route } from 'react-router-dom'
+import { FishData } from './types/fishdata'
 import './App.css'
 
 function App() {
 
-  const [fishData, setFishData] = useState()
+  const [fishData, setFishData] = useState<FishData[]>([])
   const [regions, setRegions] = useState<Set<string>>()
 
   useEffect(() => {
     const getFish = async () => {
-      const fishInfo = await fetchFish()
+      const fishInfo: FishData[] = await fetchFish()
       setFishData(fishInfo)
       //averageByRegionAndProperty(fishInfo, 'FatTotal')
       // Create a set of all the regions to remove duplicates
-      setRegions(new Set(fishInfo.map(item => item.NOAAFisheriesRegion)))
+      setRegions(new Set(fishInfo?.map(item => item.NOAAFisheriesRegion ?? '')))
     }
     getFish()
   }, [])
@@ -32,7 +31,7 @@ function App() {
       }
       <Routes>
         <Route path='/' element={<HomePage data={fishData} />} />
-        <Route path='/region' element={<RegionPage />} />
+        <Route path='/region' element={<RegionPage data={fishData}/>} />
       </Routes>
     </>
   )

@@ -1,6 +1,12 @@
+import React from 'react'
 import NutritionTable from "../components/NutritionTable";
+import { FishData } from '../types/fishdata';
 
-const HomePage = ({ data }) => {
+interface HomePageProps {
+    data: FishData[]
+}
+
+const HomePage: React.FC<HomePageProps> = ({ data }) => {
   return (
     <>
       <h1>Welcome to the App</h1>

@@ -1,20 +1,32 @@
-import { averageByRegionAndProperty } from '../utilities/calculations'
+import React from "react";
+import { averageByRegionAndProperty } from "../utilities/calculations";
+import { FishData, NutritionPropertyENUM } from "../types/fishdata";
 
-const NutritionTable = ({ fishData, nutritionProperty }) => {
-    const average = Object.entries(averageByRegionAndProperty(fishData, nutritionProperty))
-
-    return (
-        <>
-            <h3>Here is a table</h3>
-            {
-                average.map(region => {
-                    return (
-                        <h5 key={region[0] + region[1]}>{region[0]} has an average {nutritionProperty} count of {region[1]}</h5>
-                    )
-                })
-            }
-        </>
-    )
+interface NutritionTableProps {
+  nutritionProperty: NutritionPropertyENUM;
+  fishData: FishData[];
 }
 
-export default NutritionTable
+const NutritionTable: React.FC<NutritionTableProps> = ({
+  fishData,
+  nutritionProperty,
+}) => {
+  const average = Object.entries(
+    averageByRegionAndProperty(fishData, nutritionProperty)
+  );
+
+  return (
+    <>
+      <h3>Here is a table</h3>
+      {average.map((region) => {
+        return (
+          <h5 key={region[0] + region[1]}>
+            {region[0]} has an average {nutritionProperty} count of {(region[1] as string)}
+          </h5>
+        );
+      })}
+    </>
+  );
+};
+
+export default NutritionTable;

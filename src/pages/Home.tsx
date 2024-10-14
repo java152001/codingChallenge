@@ -9,7 +9,8 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ data }) => {
   return (
     <div className='container'>
-      <h1>Welcome to the App</h1>
+      <h1>ABR Fishy Emporium</h1>
+      <h3>Region health data at a glance</h3>
       {data && (
         <div>
           <NutritionTable fishData={data} />

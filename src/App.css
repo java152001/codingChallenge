@@ -9,7 +9,6 @@
 }
 
 .navbar {
-  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
@@ -51,8 +50,12 @@
 
 .grid-cell {
   background-color: var(--main-bg-color);
-  padding: 8px 0;
+  padding: 8px 2px;
   margin: 2px 0;
+}
+
+.page-title {
+  font-size: 36px; 
 }
 
 .card {
@@ -92,5 +95,20 @@
 
 .emphasis {
   font-weight: 600;
+}
+
+@media screen and (max-width: 700px) {
+  .nutritionGrid {
+    grid-template-columns: repeat(3, 100px);
+  }
+
+  .grid-cell {
+    font-size: 12px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 

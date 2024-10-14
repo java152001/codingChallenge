@@ -19,7 +19,7 @@ const NutritionTable: React.FC<NutritionTableProps> = ({ fishData }) => {
     <div className='grid-container'>
       <div className='nutritionGrid'>
         <div className='grid-cell'>Region</div>
-        <div className='grid-cell'>Average Fat</div>
+        <div className='grid-cell'>Average Fat (g)</div>
         <div className='grid-cell'>Average Calories</div>
       </div>
       {/* TODO Refactor to just a single array for both values */}

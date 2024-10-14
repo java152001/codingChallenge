@@ -33,7 +33,7 @@ const RegionPage: React.FC<RegionPageProps> = ({ data }) => {
   return (
     <div className='container'>
       {/* TODO Add a Check to see if the region is one we have data for and render an error page if not */}
-      <h4>This is a region page for the {regionName} region</h4>
+      <h2 className='page-title'>{regionName}</h2>
       <NutritionTable fishData={regionData} />
       <div className='cards-container'>
       {regionData.map((item) => {

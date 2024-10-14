@@ -5,5 +5,5 @@ export const fetchFish = async () => {
 
     return data
 
-    // TODO: Add Error Handling for failed fetch to fail gracefully
+    // TODO: Add Error Handling for failed fetch to fail gracefully & hide APIKey
 }

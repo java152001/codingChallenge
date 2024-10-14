@@ -1,13 +1,7 @@
-import React from 'react'
 import { averageByRegionAndProperty } from '../utilities/calculations'
 
 const NutritionTable = ({ fishData, nutritionProperty }) => {
-
-    //console.log(fishData)
-
     const average = Object.entries(averageByRegionAndProperty(fishData, nutritionProperty))
-
-    console.log(average)
 
     return (
         <>
